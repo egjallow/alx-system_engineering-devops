@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Function to handle SIGTERM and SIGQUIT signals
+trap 'rm -f /var/run/myscript.pid; echo "I hate the kill command"; exit 0' SIGTERM SIGQUIT
+
+# Function to handle SIGINT signal
+trap 'echo "Y U no love me?!"' SIGINT
+
+# Get the script's PID
+pid=$(echo $$)
+
+# Write PID to file
+echo "$pid" > /var/run/myscript.pid
+
+# Infinite loop with sleep
+while true; do
+  echo "To infinity and beyond"
+  sleep 2
+done
+
