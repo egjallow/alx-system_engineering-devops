@@ -1,5 +1,5 @@
-#Using Puppet, create a manifest that kills a process named `killmenow`.
-exec { 'kill':
-  command => 'pkill -f killmenow',
-  path    => ['/usr/bin', '/usr/sbin']
+# installs puppet-lint
+package { 'flask':
+  ensure   => '2.1.0',
+  provider => 'pip3',
 }
