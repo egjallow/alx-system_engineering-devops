@@ -5,16 +5,16 @@ file { '/etc/ssh/ssh_config':
 }
 
 file_line { 'disable_password_auth':
-  path    => '/etc/ssh/ssh_config',
-  line    => 'PasswordAuthentication no',
-  match   => '^PasswordAuthentication',
-  ensure  => 'present',
+  ensure => 'present',
+  path   => '/etc/ssh/ssh_config',
+  line   => 'PasswordAuthentication no',
+  match  => '^PasswordAuthentication',
 }
 
 file_line { 'set_identity_file':
-  path    => '/etc/ssh/ssh_config',
-  line    => 'IdentityFile ~/.ssh/config',
-  match   => '^IdentityFile',
-  ensure  => 'present',
+  ensure => 'present',
+  path   => '/etc/ssh/ssh_config',
+  line   => 'IdentityFile ~/.ssh/config',
+  match  => '^IdentityFile',
 }
 
