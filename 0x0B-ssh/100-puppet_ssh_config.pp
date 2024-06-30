@@ -1,22 +1,20 @@
-#!/bin/usr/env bash
-#make changes
+#!/usr/bin/env bash
 
-file {'etc/ssh/ssh_config':
-    ensure => 'present',
+file { '/etc/ssh/ssh_config':
+  ensure => 'present',
 }
 
-file_line {'etc/ssh/ssh_config':
-    path => 'etc/ssh/ssh_config',
-    line => 'PasswordAuthentication no',
-    match => 'PasswordAuthentication yes',
-    replace => 'true',
-
+file_line { 'disable_password_auth':
+  path    => '/etc/ssh/ssh_config',
+  line    => 'PasswordAuthentication no',
+  match   => '^PasswordAuthentication',
+  ensure  => 'present',
 }
 
- file_line {'etc/ssh/ssh_config':
-  4     path => 'etc/ssh/ssh_config',
-  5     line => 'IdentityFile ~/.ssh/config',
-  6     match => '^IdentifyFile',
-  7     ensure => 'present',
-  8
-  9 }
+file_line { 'set_identity_file':
+  path    => '/etc/ssh/ssh_config',
+  line    => 'IdentityFile ~/.ssh/config',
+  match   => '^IdentityFile',
+  ensure  => 'present',
+}
+
