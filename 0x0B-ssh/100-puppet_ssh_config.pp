@@ -1,20 +1,19 @@
 #!/usr/bin/env bash
 
-file { '/etc/ssh/ssh_config':
-  ensure => 'present',
+file {'/etc/ssh/shh_config':
+	ensure  => 'present',
 }
 
-file_line { 'disable_password_auth':
-  ensure => 'present',
-  path   => '/etc/ssh/ssh_config',
-  line   => 'PasswordAuthentication no',
-  match  => '^PasswordAuthentication',
-}
+file_line {'Turn off passwd auth':
+	path    => '/etc/ssh/ssh_config',
+	line    => 'PasswordAuthentication no',
+	match   => 'PasswordAuthentication yes',
+	replace => 'true',
 
-file_line { 'set_identity_file':
-  ensure => 'present',
-  path   => '/etc/ssh/ssh_config',
-  line   => 'IdentityFile ~/.ssh/config',
-  match  => '^IdentityFile',
 }
-
+file_line {'Declare identity file':
+	path    => '/etc/ssh/ssh_config',
+	line    => 'IdentityFile ~/.ssh/school',
+	match   => '^IdentityFile',
+	ensure  => 'present',
+}
