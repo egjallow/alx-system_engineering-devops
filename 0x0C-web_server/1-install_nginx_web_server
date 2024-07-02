@@ -2,7 +2,7 @@
 
 # install nginx and open port
 
-apt-get install -y
+apt-get update -y
 apt-get install nginx -y
 sudo ufw allow 'Nginx HTTP'
 sh -c 'echo "Hello World!" > /var/www/html/index.html'
