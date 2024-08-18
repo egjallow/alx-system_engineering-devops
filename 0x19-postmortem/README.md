@@ -1,6 +1,9 @@
-#Postmortem Report: Connection Refused Error
+## Postmortem Report: Connection Refused Error
 
-##Issue Summary:
+![Gemini_Generated_Image_co8cquco8cquco8c](https://github.com/user-attachments/assets/233343bd-05fc-430b-9262-1afc771c743f)
+
+
+#Issue Summary:
 
 Duration: The outage occurred on August 18, 2024, from 10:00 AM to 10:45 AM (UTC).
 
@@ -8,7 +11,7 @@ Impact: The web service hosted on the server became inaccessible, affecting appr
 
 Root Cause: The root cause of the issue was an incorrect network address configuration in the system’s curl command. The command was set to connect to 0:80, which is not a valid or routable IP address, causing the connection to fail.
 
-##Timeline:
+## Timeline:
 
 10:00 AM - Issue detected via monitoring alert indicating that HTTP requests to the service were failing.
 10:02 AM - Initial investigation began; the web server logs were reviewed, and network configurations were checked.
@@ -25,7 +28,7 @@ Resolution: The resolution involved identifying the incorrect IP address in the 
 
 Corrective and Preventative Measures:
 
-##Improvement Areas:
+## Improvement Areas:
 
 Enhance the validation of environment variables before deployment to catch configuration errors.
 Improve the monitoring system to detect similar issues earlier and more accurately.
@@ -36,4 +39,10 @@ Patch Nginx Server: Update the Nginx server configuration to include additional 
 Add Monitoring: Implement monitoring on the server’s curl commands to detect invalid addresses and trigger alerts.
 Review Deployment Process: Update the deployment checklist to include a step for verifying environment variable configurations.
 Team Training: Conduct a training session for the engineering team on best practices for configuring network addresses.
+
+
+
+![Gemini_Generated_Image_s9k08xs9k08xs9k0](https://github.com/user-attachments/assets/7e4c233c-3aab-4f25-9e3a-7b22de1a0feb)
+
+
 
